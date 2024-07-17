@@ -59,7 +59,7 @@ def get_gesture(landmarks):
         print("Peace")
     
     else:
-        return "Unknown Gesture"
+        return "Unknown"
 
 while cap.isOpened():
     success, image = cap.read()
@@ -81,7 +81,8 @@ while cap.isOpened():
             
             landmarks = hand_landmarks.landmark
             gesture = get_gesture(landmarks)
-            cv2.putText(image, gesture, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.rectangle(image, (40,50), (400,110),(20, 20, 20), -1)
+            cv2.putText(image, gesture, (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
 
     cv2.imshow('Sign Language', image)
     if cv2.waitKey(5) & 0xFF == 27:
